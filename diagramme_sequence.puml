@@ -1,0 +1,207 @@
+@startuml Diagramme_Sequence_MindCheck
+
+' ══════════════════════════════════════════════════════════════
+'  DIAGRAMMES DE SÉQUENCE — MindCheck
+' ══════════════════════════════════════════════════════════════
+
+skinparam backgroundColor #FEFEFE
+skinparam sequenceParticipantBackgroundColor #F5F0E8
+skinparam sequenceParticipantBorderColor #3D5A3D
+skinparam sequenceParticipantFontColor #2D3B2D
+skinparam sequenceArrowColor #3D5A3D
+skinparam sequenceLifeLineBorderColor #6B7B6B
+skinparam sequenceGroupBackgroundColor #EDE8DD
+skinparam sequenceGroupBorderColor #3D5A3D
+skinparam sequenceDividerBackgroundColor #3D5A3D
+skinparam sequenceDividerFontColor #FFFFFF
+skinparam noteBorderColor #3D5A3D
+skinparam noteBackgroundColor #F5F0E8
+
+title Diagramme de séquence — Authentification
+
+actor Utilisateur as U
+participant "MainActivity\n(Login)" as MA
+participant "FirebaseAuth" as FA
+participant "HomeActivity" as HA
+
+== Connexion ==
+
+U -> MA : Saisir email + mot de passe
+U -> MA : Cliquer "Se connecter"
+MA -> MA : Valider les champs
+MA -> FA : signInWithEmailAndPassword(email, password)
+
+alt Succès
+    FA --> MA : onComplete(success)
+    MA -> HA : startActivity(HomeActivity)
+    MA -> MA : finish()
+    HA --> U : Afficher le dashboard
+else Échec
+    FA --> MA : onComplete(failure)
+    MA --> U : Toast "Erreur d'authentification"
+end
+
+== Inscription ==
+
+newpage Diagramme de séquence — Inscription
+
+actor Utilisateur as U
+participant "Register" as RG
+participant "FirebaseAuth" as FA
+participant "MainActivity\n(Login)" as MA
+
+U -> RG : Saisir nom, email, mot de passe
+U -> RG : Cliquer "S'inscrire"
+RG -> RG : Valider les champs\n(nom, email, mdp >= 6 car, confirmation)
+
+RG -> FA : createUserWithEmailAndPassword(email, password)
+
+alt Succès
+    FA --> RG : onComplete(success)
+    RG -> FA : updateProfile(displayName = nom)
+    FA --> RG : Profil mis à jour
+    RG -> FA : signOut()
+    RG -> MA : startActivity(MainActivity)
+    RG -> RG : finish()
+    MA --> U : Toast "Compte créé !\nConnectez-vous"
+else Échec
+    FA --> RG : onComplete(failure)
+    RG --> U : Toast "Erreur d'inscription"
+end
+
+== Passer un test ==
+
+newpage Diagramme de séquence — Test Psychologique
+
+actor Utilisateur as U
+participant "HomeActivity" as HA
+participant "MentalTestActivity" as MT
+participant "Serveur Ollama" as OL
+participant "Firestore" as FS
+
+U -> HA : Cliquer sur carte\n(Dépression / Anxiété / Stress)
+HA -> MT : startActivity(type = "depression")
+MT -> MT : setupTestData()\nCharger les questions PHQ-9
+
+loop Pour chaque question (1 à 9)
+    MT --> U : Afficher la question + options
+    U -> MT : Sélectionner une réponse
+    MT -> MT : totalScore += score\ncurrentQuestionIndex++
+end
+
+MT -> MT : showResult()\nCalculer l'interprétation
+
+MT -> FS : collection("test_results").add(\n  userId, testType, score,\n  interpretation, date)
+FS --> MT : Sauvegarde confirmée
+
+MT --> U : Afficher résultat\n(score + interprétation)
+
+MT -> OL : POST /analyze-test\n{test_type, score}
+
+alt Serveur disponible
+    OL --> MT : {analysis, recommendations}
+    MT --> U : Enrichir le résultat\navec l'analyse IA
+else Serveur indisponible
+    OL --> MT : Timeout / Erreur
+    note right : Le résultat fallback\nest déjà affiché
+end
+
+== Chatbot ==
+
+newpage Diagramme de séquence — Chatbot IA
+
+actor Utilisateur as U
+participant "ChatBotActivity" as CB
+participant "AvatarView" as AV
+participant "MessageAdapter" as AD
+participant "Serveur Ollama" as OL
+
+CB --> U : Message d'accueil\n"Bonjour ! Comment te\nsens-tu aujourd'hui ?"
+AV -> AV : Expression = NEUTRAL
+
+alt Saisie clavier
+    U -> CB : Taper un message
+    CB -> AV : setExpression(LISTENING)
+    U -> CB : Cliquer "Envoyer"
+else Saisie vocale
+    U -> CB : Cliquer bouton micro
+    CB -> CB : launchSpeechRecognizer()
+    CB --> U : "Parlez maintenant..."
+    U -> CB : Parler
+    CB -> CB : Texte reconnu → champ texte
+    U -> CB : Cliquer "Envoyer"
+end
+
+CB -> AD : addUserMessage(texte)
+AD --> U : Afficher bulle utilisateur
+
+CB -> AV : setExpression(THINKING)
+CB -> AD : showTypingIndicator()
+AD --> U : Afficher animation "..."
+
+CB -> OL : POST /chat\n{message, session_id}
+
+alt Serveur disponible
+    OL --> CB : {response}
+    CB -> AD : removeTypingIndicator()
+    CB -> AD : addBotMessage(response)
+    CB -> CB : analyzeEmotion(response)
+    CB -> AV : setExpression(HAPPY / SAD / NEUTRAL)
+    AD --> U : Afficher bulle bot
+else Serveur indisponible
+    OL --> CB : Timeout / Erreur
+    CB -> CB : localFallback(texte)
+    CB -> AD : removeTypingIndicator()
+    CB -> AD : addBotMessage(fallback)
+    AD --> U : Afficher réponse locale
+end
+
+== Mood Tracker ==
+
+newpage Diagramme de séquence — Journal d'Humeur
+
+actor Utilisateur as U
+participant "MoodTrackerActivity" as MO
+participant "Firestore" as FS
+participant "Caméra / Galerie" as CAM
+
+MO -> FS : loadMoodHistory()\nwhereEqualTo("userId", uid)
+FS --> MO : Liste des 7 dernières entrées
+MO --> U : Afficher historique
+
+U -> MO : Sélectionner une humeur\n(😢 😕 😐 🙂 😄)
+MO -> MO : selectMood(level)\nAnimation scale
+
+opt Ajout d'une note
+    U -> MO : Saisir une note textuelle
+end
+
+opt Ajout d'une photo
+    U -> MO : Cliquer "Ajouter une photo"
+    MO --> U : Choix : Caméra ou Galerie
+
+    alt Caméra
+        MO -> CAM : ACTION_IMAGE_CAPTURE
+        CAM --> MO : Photo capturée (URI)
+    else Galerie
+        MO -> CAM : ACTION_PICK
+        CAM --> MO : Image sélectionnée (URI)
+    end
+
+    MO -> MO : Compresser en JPEG\nEncoder en Base64
+    MO --> U : Afficher aperçu photo
+end
+
+U -> MO : Cliquer "Enregistrer"
+MO -> FS : collection("mood_entries").add(\n  userId, moodLevel, note,\n  photo, date)
+
+alt Succès
+    FS --> MO : Sauvegarde confirmée
+    MO --> U : Toast "Humeur enregistrée !"
+    MO -> MO : finish()
+else Échec
+    FS --> MO : Erreur
+    MO --> U : Toast "Erreur"
+end
+
+@enduml

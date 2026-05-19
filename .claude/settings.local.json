@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del \"C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie\\\\app\\\\src\\\\main\\\\java\\\\com\\\\example\\\\quizapp\\\\NearbyHelpActivity.java\")",
+      "Bash(del \"C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie\\\\app\\\\src\\\\main\\\\java\\\\com\\\\example\\\\quizapp\\\\PlacesResponse.java\")",
+      "Bash(del \"C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie\\\\app\\\\src\\\\main\\\\java\\\\com\\\\example\\\\quizapp\\\\PlaceResult.java\")",
+      "Bash(del \"C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\activity_nearby_help.xml\")",
+      "Bash(del \"C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie\\\\app\\\\src\\\\main\\\\res\\\\drawable\\\\ic_baseline_location_on_24.xml\")",
+      "Bash(dir C:\\\\Users\\\\HP\\\\AndroidStudioProjects\\\\QuizAPP - Copie \\(2\\) - Copie *)"
+    ]
+  }
+}

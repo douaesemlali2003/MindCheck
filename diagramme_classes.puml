@@ -1,0 +1,110 @@
+@startuml Diagramme_Classes_MindCheck
+
+' ══════════════════════════════════════════════════════════════
+'  DIAGRAMME DE CLASSES — MindCheck (simplifié)
+' ══════════════════════════════════════════════════════════════
+
+skinparam backgroundColor #FEFEFE
+skinparam classBackgroundColor #F5F0E8
+skinparam classBorderColor #3D5A3D
+skinparam classFontColor #2D3B2D
+skinparam classFontSize 12
+skinparam classAttributeFontSize 11
+
+skinparam arrowColor #6B7B6B
+skinparam arrowFontSize 10
+skinparam arrowFontColor #3D5A3D
+
+skinparam stereotypeCBackgroundColor #3D5A3D
+skinparam stereotypeCFontColor #FFFFFF
+
+' ══════════════════════════════════════════════════════════════
+'  CLASSES PRINCIPALES
+' ══════════════════════════════════════════════════════════════
+
+class User {
+    - id : String
+    - email : String
+    - displayName : String
+    + getId() : String
+    + getEmail() : String
+    + getDisplayName() : String
+}
+
+class TestResult {
+    - userId : String
+    - testType : String
+    - score : int
+    - interpretation : String
+    - date : Timestamp
+    + getUserId() : String
+    + getTestType() : String
+    + getScore() : int
+    + getInterpretation() : String
+    + getDate() : Timestamp
+}
+
+class MoodEntry {
+    - userId : String
+    - moodLevel : int
+    - note : String
+    - photo : String
+    - date : Timestamp
+    + getUserId() : String
+    + getMoodLevel() : int
+    + getNote() : String
+    + getPhoto() : String
+    + getDate() : Timestamp
+    + getEmoji() : String
+}
+
+class Message {
+    - content : String
+    - isUser : boolean
+    - timestamp : Timestamp
+    + getContent() : String
+    + isUser() : boolean
+    + getTimestamp() : Timestamp
+}
+
+class ChatRequest {
+    - message : String
+    - session_id : String
+    + getMessage() : String
+    + getSessionId() : String
+}
+
+class ChatResponse {
+    - response : String
+    + getResponse() : String
+}
+
+class TestAnalysisRequest {
+    - test_type : String
+    - score : int
+    + getTestType() : String
+    + getScore() : int
+}
+
+class TestAnalysisResponse {
+    - analysis : String
+    - recommendations : List<String>
+    + getAnalysis() : String
+    + getRecommendations() : List<String>
+}
+
+' ══════════════════════════════════════════════════════════════
+'  RELATIONS
+' ══════════════════════════════════════════════════════════════
+
+User "1" -- "0..*" TestResult : effectue >
+User "1" -- "0..*" MoodEntry : enregistre >
+User "1" -- "0..*" Message : envoie >
+
+ChatRequest ..> ChatResponse : produit
+TestAnalysisRequest ..> TestAnalysisResponse : produit
+
+Message ..> ChatRequest : envoyé via
+TestResult ..> TestAnalysisRequest : analysé via
+
+@enduml

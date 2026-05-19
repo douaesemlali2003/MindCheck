@@ -1,0 +1,118 @@
+@startuml Diagramme_Cas_Utilisation_MindCheck
+
+' ══════════════════════════════════════════════════════════════
+'  DIAGRAMME DE CAS D'UTILISATION — MindCheck
+' ══════════════════════════════════════════════════════════════
+
+top to bottom direction
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+
+skinparam backgroundColor #FEFEFE
+skinparam usecaseBackgroundColor #F5F0E8
+skinparam usecaseBorderColor #3D5A3D
+skinparam usecaseFontColor #2D3B2D
+skinparam usecaseFontSize 11
+
+skinparam packageBackgroundColor #FFFFFF
+skinparam packageBorderColor #3D5A3D
+skinparam packageFontColor #3D5A3D
+skinparam packageFontStyle bold
+skinparam packageFontSize 13
+
+skinparam actorBackgroundColor #3D5A3D
+skinparam actorBorderColor #2D4A2D
+skinparam actorFontSize 12
+skinparam actorFontStyle bold
+
+skinparam arrowColor #6B7B6B
+skinparam arrowFontSize 10
+skinparam arrowFontColor #6B7B6B
+
+' ── Acteur ─────────────────────────────────────────────────────
+actor "Utilisateur" as User
+
+' ── Système MindCheck ─────────────────────────────────────────
+rectangle "MindCheck" {
+
+    ' ── Ligne 1 : Authentification ────────────────────────────
+    package "Authentification" {
+        usecase "S'inscrire" as UC1
+        usecase "Se connecter" as UC2
+        usecase "Se déconnecter" as UC3
+    }
+
+    ' ── Ligne 2 : Tests Psychologiques ────────────────────────
+    package "Tests Psychologiques" {
+        usecase "Passer le test de\ndépression (PHQ-9)" as UC4
+        usecase "Passer le test\nd'anxiété (GAD-7)" as UC5
+        usecase "Passer le test\nde stress (PSS)" as UC6
+        usecase "Consulter le résultat\net l'interprétation" as UC7
+        usecase "Obtenir une\nanalyse IA" as UC8
+        usecase "Sauvegarder\nle résultat" as UC9
+    }
+
+    ' ── Ligne 3 : Journal d'Humeur ────────────────────────────
+    package "Journal d'Humeur" {
+        usecase "Enregistrer\nson humeur" as UC10
+        usecase "Ajouter une note" as UC11
+        usecase "Ajouter une photo" as UC12
+        usecase "Consulter l'historique\ndes humeurs" as UC13
+    }
+
+    ' ── Ligne 4 : Chatbot IA ──────────────────────────────────
+    package "Chatbot IA" {
+        usecase "Discuter avec\nle chatbot" as UC14
+        usecase "Utiliser la\nreconnaissance vocale" as UC15
+    }
+
+    ' ── Ligne 5 : Bien-être ───────────────────────────────────
+    package "Bien-être" {
+        usecase "Pratiquer un exercice\nde respiration guidée" as UC16
+    }
+
+    ' ── Ligne 6 : Suivi & Aide ────────────────────────────────
+    package "Suivi & Aide" {
+        usecase "Consulter les\nstatistiques" as UC17
+        usecase "Consulter les\nressources d'aide" as UC18
+        usecase "Appeler un numéro\nd'urgence" as UC19
+    }
+}
+
+' ── Connexions Utilisateur (dans l'ordre des packages) ────────
+User -- UC1
+User -- UC2
+User -- UC3
+
+User -- UC4
+User -- UC5
+User -- UC6
+
+User -- UC10
+
+User -- UC14
+
+User -- UC16
+
+User -- UC17
+User -- UC18
+
+' ── Relations «include» ───────────────────────────────────────
+UC4 ..> UC7 : <<include>>
+UC5 ..> UC7 : <<include>>
+UC6 ..> UC7 : <<include>>
+UC7 ..> UC9 : <<include>>
+
+UC10 ..> UC13 : <<include>>
+
+UC18 ..> UC19 : <<include>>
+
+' ── Relations «extend» ────────────────────────────────────────
+UC8 ..> UC7 : <<extend>>
+
+UC11 ..> UC10 : <<extend>>
+UC12 ..> UC10 : <<extend>>
+
+UC15 ..> UC14 : <<extend>>
+
+@enduml

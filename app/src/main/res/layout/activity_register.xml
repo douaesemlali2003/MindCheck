@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F0E8">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MindCheck"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:textColor="#2D3B2D" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Créez votre espace bien-être"
+                android:textSize="14sp"
+                android:textColor="#6B7B6B" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Créer un compte"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="#2D3B2D" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Rejoignez MindCheck aujourd'hui"
+                        android:textSize="14sp"
+                        android:textColor="#6B7B6B" />
+
+                    <!-- Nom -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edittext_modern"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+                        <EditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Nom complet"
+                            android:inputType="textPersonName"
+                            android:drawableStart="@drawable/baseline_person_28"
+                            android:drawablePadding="10dp"
+                            android:textColor="#2D3B2D"
+                            android:textColorHint="#9CA89C"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <!-- Email -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_modern"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+                        <EditText
+                            android:id="@+id/etMail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:drawableStart="@drawable/baseline_mail_28"
+                            android:drawablePadding="10dp"
+                            android:textColor="#2D3B2D"
+                            android:textColorHint="#9CA89C"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <!-- Mot de passe -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_modern"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Mot de passe"
+                            android:inputType="textPassword"
+                            android:drawableStart="@drawable/baseline_lock_28"
+                            android:drawablePadding="10dp"
+                            android:textColor="#2D3B2D"
+                            android:textColorHint="#9CA89C"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <!-- Confirmer -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_modern"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+                        <EditText
+                            android:id="@+id/etConfirmPass"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Confirmer le mot de passe"
+                            android:inputType="textPassword"
+                            android:drawableStart="@drawable/baseline_lock_28"
+                            android:drawablePadding="10dp"
+                            android:textColor="#2D3B2D"
+                            android:textColorHint="#9CA89C"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/bRegister"
+                        style="@style/ButtonPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Créer mon compte" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F0E8">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F0E8"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvTestTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="#2D3B2D" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
+
+            <ProgressBar
+                android:id="@+id/testProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/custom_progress_bar" />
+
+            <TextView
+                android:id="@+id/tvQuestionCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="1/10"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:letterSpacing="0.05"
+                android:textColor="#6B7B6B" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E8E3D9" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp">
+
+            <!-- Question card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="QUESTION"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.1"
+                        android:textSize="11sp"
+                        android:textColor="#9CA89C"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ma question s'affiche ici ?"
+                        android:fontFamily="serif"
+                        android:textSize="22sp"
+                        android:textColor="#2D3B2D"
+                        android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Answer buttons -->
+            <LinearLayout
+                android:id="@+id/answersContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <Button android:id="@+id/btnOption1" style="@style/ButtonSecondary" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="10dp" android:text="Option 1" />
+                <Button android:id="@+id/btnOption2" style="@style/ButtonSecondary" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="10dp" android:text="Option 2" />
+                <Button android:id="@+id/btnOption3" style="@style/ButtonSecondary" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="10dp" android:text="Option 3" />
+                <Button android:id="@+id/btnOption4" style="@style/ButtonSecondary" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="10dp" android:text="Option 4" />
+                <Button android:id="@+id/btnOption5" style="@style/ButtonSecondary" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="10dp" android:text="Option 5" android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ce test ne remplace pas un diagnostic professionnel."
+                android:textAlignment="center"
+                android:textColor="#9CA89C"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

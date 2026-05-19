@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F0E8">
+
+    <!-- Header professionnel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F0E8"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Avatar cercle initiales -->
+        <TextView
+            android:id="@+id/tvAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/avatar_initials_bg"
+            android:gravity="center"
+            android:text="?"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <!-- Texte bonjour -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bonjour,"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="#2D3B2D" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comment allez-vous aujourd'hui ?"
+                android:textSize="13sp"
+                android:textColor="#6B7B6B"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Logout discret -->
+        <ImageView
+            android:id="@+id/ivLogout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_logout_24"
+            app:tint="#9CA89C"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Déconnexion" />
+    </LinearLayout>
+
+    <!-- Separator -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E8E3D9" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="32dp">
+
+            <!-- Label section tests -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ÉVALUER MON ÉTAT"
+                android:textSize="11sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.15"
+                android:textColor="#9CA89C"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Grille tests 2 colonnes -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:useDefaultMargins="false">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDepression"
+                    style="@style/CardStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center">
+                        <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_purple" android:gravity="center">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_psychology_24" app:tint="#3D5A3D" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Dépression" android:textColor="#2D3B2D" android:textSize="14sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Test PHQ" android:textColor="#9CA89C" android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAnxiety"
+                    style="@style/CardStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center">
+                        <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_blue" android:gravity="center">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_favorite_24" app:tint="#3D5A3D" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Anxiété" android:textColor="#2D3B2D" android:textSize="14sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Test GAD" android:textColor="#9CA89C" android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardStress"
+                    style="@style/CardStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center">
+                        <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_orange" android:gravity="center">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_stress_24" app:tint="#3D5A3D" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Stress" android:textColor="#2D3B2D" android:textSize="14sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Test PSS" android:textColor="#9CA89C" android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMood"
+                    style="@style/CardStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center">
+                        <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_green" android:gravity="center">
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_mood_24" app:tint="#3D5A3D" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Humeur" android:textColor="#2D3B2D" android:textSize="14sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Journal" android:textColor="#9CA89C" android:textSize="11sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+
+            <!-- Label outils -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MES OUTILS"
+                android:textSize="11sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.15"
+                android:textColor="#9CA89C"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Chat Bot -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardChat"
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_marginBottom="10dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_purple" android:gravity="center">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_chat_24" app:tint="#3D5A3D" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat Bot IA" android:textColor="#2D3B2D" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Parlez à votre compagnon virtuel" android:textColor="#9CA89C" android:textSize="12sp" />
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#3D5A3D" android:textSize="22sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Respiration -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBreathing"
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_marginBottom="10dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_circle_teal" android:gravity="center">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_baseline_air_24" app:tint="#3D5A3D" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="14dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Respiration Guidée" android:textColor="#2D3B2D" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="4-7-8 · Box · Cohérence cardiaque" android:textColor="#9CA89C" android:textSize="12sp" />
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#3D5A3D" android:textSize="22sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/btnStats"
+                style="@style/ButtonSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:text="Mes Statistiques" />
+
+            <Button
+                android:id="@+id/btnResources"
+                style="@style/ButtonSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:text="Ressources d'aide" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

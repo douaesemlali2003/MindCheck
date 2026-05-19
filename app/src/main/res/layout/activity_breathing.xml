@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F0E8">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F0E8"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Respiration Guidée"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="#2D3B2D" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Respirez, apaisez votre esprit"
+            android:textSize="14sp"
+            android:textColor="#6B7B6B" />
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E8E3D9" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp">
+
+            <!-- Technique selector card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TECHNIQUE"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.1"
+                        android:textSize="11sp"
+                        android:textColor="#9CA89C"
+                        android:layout_marginBottom="12dp" />
+
+                    <RadioGroup
+                        android:id="@+id/rgTechnique"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb478"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="4-7-8 · Anti-stress"
+                            android:textColor="#2D3B2D"
+                            android:textSize="14sp"
+                            android:buttonTint="#3D5A3D"
+                            android:checked="true"
+                            android:paddingStart="8dp" />
+
+                        <RadioButton
+                            android:id="@+id/rbBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="Box Breathing · Concentration"
+                            android:textColor="#2D3B2D"
+                            android:textSize="14sp"
+                            android:buttonTint="#3D5A3D"
+                            android:paddingStart="8dp" />
+
+                        <RadioButton
+                            android:id="@+id/rbCoherence"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:text="Cohérence cardiaque · 5-5"
+                            android:textColor="#2D3B2D"
+                            android:textSize="14sp"
+                            android:buttonTint="#3D5A3D"
+                            android:paddingStart="8dp" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Breathing circle -->
+            <FrameLayout
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="32dp">
+
+                <View
+                    android:id="@+id/breathingCircle"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_breathing" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPhase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prêt ?"
+                        android:fontFamily="serif"
+                        android:textSize="22sp"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/tvCountdown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        android:textSize="44sp"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvCycles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Cycles complétés : 0"
+                android:textSize="14sp"
+                android:textColor="#6B7B6B"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btnStartBreathing"
+                style="@style/ButtonPrimary"
+                android:layout_width="200dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="20dp"
+                android:text="Commencer" />
+
+            <!-- Info card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BIENFAITS"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.1"
+                        android:textSize="11sp"
+                        android:textColor="#9CA89C"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvTechniqueDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="La technique 4-7-8 active le système nerveux parasympathique, réduisant le stress et favorisant le sommeil."
+                        android:textSize="14sp"
+                        android:textColor="#6B7B6B"
+                        android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
